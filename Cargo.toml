@@ -1,0 +1,9 @@
+[package]
+name = "detsep"
+version = "0.1.0"
+edition = "2021"
+authors = ["Logan Esenther <logan@cal.berkeley.edu>"]
+description = "Detect the most likely field separator character for data in stdin by frequency"
+license = "MIT"
+
+[dependencies]

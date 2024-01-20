@@ -1,0 +1,21 @@
+#!/bin/bash
+
+bin="./target/release/detsep"
+
+test() {
+  local data=$1
+  local expected=$2
+
+  echo -n "Testing $(batt <<<"$data")..."
+  local res
+  res=$("$bin" <<<"$data")
+
+  [ "$res" = "$expected" ] && echo "PASS" || echo "FAIL (expected: '$expected', got: '$res')"
+}
+
+test $'this\tis\ta\ttest' $'\t'
+test 'this;is;a;test' ';'
+test 'this is a test' ' '
+test 'this:is:a:test' ':'
+test 'this|is|a|test' '|'
+test 'this,is,a,test' ','
